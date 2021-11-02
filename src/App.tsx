@@ -11,6 +11,7 @@ const initialTodos:Array<Todo>=[{
 function App() {
   const [tasList, setTasList] = useState(initialTodos)
   
+  
    const addTodo:addTodo=(newTask)=>{
      setTasList([...tasList, {task:newTask,done:false,id:Math.random()}])
    }

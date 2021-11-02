@@ -1,4 +1,5 @@
 import { Todo } from '../types'
+import TodoCard from './TodoCard'
 
 type TaskList={
     taskList:Todo[]
@@ -8,9 +9,7 @@ type TaskList={
 const TaskList = (props:TaskList) => {
     return (
         <div>
-            {props.taskList.map(el=> <ul>
-                <li>{el.task}</li>
-            </ul> )}
+            {props.taskList.map(el=> <TodoCard todo={el} /> )}
         </div>
     )
 }
