@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import { FC, useState } from 'react';
 import './App.css';
+import AddTodo from './components/AddTodo';
+import TaskList from './components/TodoList';
+import { addTodo, Todo } from './types';
+
+const initialTodos:Array<Todo>=[{
+  task:"task1",done:false,id:1
+}]
 
 function App() {
+  const [tasList, setTasList] = useState(initialTodos)
+  
+   const addTodo:addTodo=(newTask)=>{
+     setTasList([...tasList, {task:newTask,done:false,id:Math.random()}])
+   }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+       <AddTodo addTodo={addTodo} />
+       <TaskList taskList={tasList}/>
     </div>
   );
 }
