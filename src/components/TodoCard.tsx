@@ -1,18 +1,23 @@
 import React, { FC } from 'react'
-import { Todo } from '../types'
+import { deleteTodo, Todo } from '../types'
 import "./TodoCard.css"
 type TodoCard={
-    todo:Todo
+    todo:Todo,
+    deleteTodo:deleteTodo
 }
 
 
 
-const TodoCard:FC<TodoCard> = ({todo}) => {
+const TodoCard:FC<TodoCard> = ({todo,deleteTodo}) => {
+ const handleDelete=()=>{
+     deleteTodo(todo.id)
+ }
+
     return (
        
             <ul className="todo">
                 <li>{todo.task}</li>
-                <button className="delete-btn">X</button>
+                <button className="delete-btn" onClick={handleDelete}>X</button>
             </ul>
       
     )

@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
 import './App.css';
 import AddTodo from './components/AddTodo';
-import TaskList from './components/TodoList';
-import { addTodo, Todo } from './types';
+import TodoList from './components/TodoList';
+import { addTodo, deleteTodo, Todo } from './types';
 
 const initialTodos:Array<Todo>=[{
   task:"task1",done:false,id:1
@@ -16,10 +16,16 @@ function App() {
      setTasList([...tasList, {task:newTask,done:false,id:Math.random()}])
    }
 
+   const deleteTodo:deleteTodo=(id)=>{
+       setTasList(tasList.filter(el=>el.id!==id))
+   }
+
+
+
   return (
     <div>
        <AddTodo addTodo={addTodo} />
-       <TaskList taskList={tasList}/>
+       <TodoList deleteTodo={deleteTodo} taskList={tasList}/>
     </div>
   );
 }
